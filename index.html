@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnovXT | Innovative IT Solutions & Talent</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #0052a3;
+            --secondary: #00a8cc;
+            --dark: #1a1a1a;
+            --light: #f5f5f5;
+            --text: #333;
+            --border: #e0e0e0;
+            --success: #28a745;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: #fff;
+        }
+
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--secondary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--secondary);
+        }
+
+        .cta-btn {
+            background: var(--secondary);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-btn:hover {
+            background: var(--primary);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 4rem 2rem;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        section p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .features {
+            background: var(--light);
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--secondary);
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .feature-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .feature-text p {
+            color: #666;
+            margin: 0;
+        }
+
+        .process {
+            background: white;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            background: var(--secondary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .step p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .differentiators {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .diff-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border-top: 4px solid var(--secondary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .diff-item h4 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .diff-item p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .about-text ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .about-text li {
+            padding: 0.5rem 0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .about-text li:before {
+            content: "✓";
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .industries {
+            background: var(--light);
+        }
+
+        .industry-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .industry-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .industry-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+        }
+
+        .industry-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .industry-item p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .contact {
+            background: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 5px rgba(0, 168, 204, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-block h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .info-block p {
+            color: #666;
+            margin: 0;
+        }
+
+        .values {
+            background: var(--light);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .value-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .value-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .value-item p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            color: #ccc;
+            margin: 0;
+        }
+
+        .success-message {
+            display: none;
+            background: var(--success);
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .cta-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--secondary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            z-index: 999;
+            border: none;
+            font-size: 1.2rem;
+            transition: opacity 0.3s;
+        }
+
+        .scroll-to-top.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-to-top:hover {
+            background: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header>
+        <nav>
+            <div class="logo">InnovXT</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#industries" class="nav-link">Industries</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#contact" class="cta-btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Innovative IT Solutions & Exceptional Talent</h1>
+            <p>Empower your business to thrive in the digital age with our comprehensive talent solutions and innovative consulting services</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Request Consultation</button>
+                <button class="btn btn-secondary" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">Explore Services</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>About InnovXT</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Delivering Innovation Through Talent</h3>
+                    <p>InnovXT (Innovative Xtream Technologies) is a leading IT solutions provider specializing in staffing solutions and digital transformation. We are not just another staffing company; we build opportunities and careers.</p>
+                    <p><strong>"Tailored Talent, Trusted Results"</strong> is our promise—one that transcends standard partnership models.</p>
+                    <ul>
+                        <li>Expert FTE & Consulting Services</li>
+                        <li>Niche Skill Expertise</li>
+                        <li>Long-term Client Relationships</li>
+                        <li>Proven Track Record</li>
+                        <li>Leadership & Support</li>
+                    </ul>
+                </div>
+                <div class="about-text">
+                    <h3>Why Choose InnovXT?</h3>
+                    <p>We deliver seamless, dependable, and effective collaboration for both our clients and talent partners.</p>
+                    <div style="margin-top: 2rem;">
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">Core Values</h4>
+                        <div class="values">
+                            <div class="value-item">
+                                <h4>Excellence</h4>
+                                <p>Commitment to delivering exceptional results</p>
+                            </div>
+                            <div class="value-item">
+                                <h4>Integrity</h4>
+                                <p>Fair and transparent with all stakeholders</p>
+                            </div>
+                            <div class="value-item">
+                                <h4>Partnership</h4>
+                                <p>Making it easier to do business together</p>
+                            </div>
+                            <div class="value-item">
+                                <h4>Growth</h4>
+                                <p>Continuously enriching skills and expertise</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="features" id="services">
+        <div class="container">
+            <h2>Our Service Lines</h2>
+            <p class="section-intro">Comprehensive IT solutions tailored to transform your business operations and accelerate digital growth</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Staffing Solutions</h3>
+                    <p>Full-time equivalent (FTE) talent acquisition and contract staffing with expertise in specialized IT roles. We provide consultants who work on your projects while offering flexibility and cost-effectiveness.</p>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem; color: #666;">
+                        <li>Permanent Staffing</li>
+                        <li>Contract Staffing</li>
+                        <li>Offshore Development Teams</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Consulting Services</h3>
+                    <p>Strategic IT consulting to optimize your digital transformation journey. Our expert consultants provide guidance on technology adoption, process improvement, and operational efficiency.</p>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem; color: #666;">
+                        <li>Digital Transformation</li>
+                        <li>Technology Strategy</li>
+                        <li>Process Optimization</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>B2B Lead Generation</h3>
+                    <p>Qualified B2B lead generation services to expand your business opportunities. We identify and connect you with decision-makers in your target industries.</p>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem; color: #666;">
+                        <li>Prospect Qualification</li>
+                        <li>Pipeline Development</li>
+                        <li>Market Research</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Sales/Demand Generation</h3>
+                    <p>Comprehensive demand generation and sales consulting to drive revenue growth. We create targeted campaigns that resonate with your audience and drive qualified opportunities.</p>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem; color: #666;">
+                        <li>Campaign Strategy</li>
+                        <li>Sales Enablement</li>
+                        <li>Revenue Growth</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <h2>Our Recruitment Process</h2>
+            <p class="section-intro">A seamless, transparent, and efficient process designed for your success</p>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Requirement Analysis</h4>
+                    <p>We gather detailed information including job descriptions, rates, location, and timelines to fully understand your staffing needs.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Candidate Screening</h4>
+                    <p>Screen and shortlist profiles, submitting only the most qualified candidates that match your requirements.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Candidate Matching</h4>
+                    <p>Match your requirements to our extensive talent pool to identify the perfect fit for your projects.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Onboarding & Support</h4>
+                    <p>Once selected, we initiate comprehensive onboarding and provide continuous support to your team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentiators Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Why Partner With InnovXT?</h2>
+            <p class="section-intro">Our key differentiators ensure smooth, reliable, and rewarding outcomes</p>
+            <div class="differentiators">
+                <div class="diff-item">
+                    <h4>✓ Prescreened Talent Network</h4>
+                    <p>Access top-tier candidates through our extensive network of prescreened, qualified IT professionals with specialized expertise.</p>
+                </div>
+                <div class="diff-item">
+                    <h4>✓ Fast Turnaround</h4>
+                    <p>Receive qualified candidate profiles within 24-48 hours to meet your urgent staffing deadlines.</p>
+                </div>
+                <div class="diff-item">
+                    <h4>✓ Cost-Effective Solutions</h4>
+                    <p>Save up to 40% with our affordable, efficient staffing solutions featuring fair and transparent pricing models.</p>
+                </div>
+                <div class="diff-item">
+                    <h4>✓ Leadership Support</h4>
+                    <p>Direct support from our leadership team fosters strong client relationships and ensures seamless operations.</p>
+                </div>
+                <div class="diff-item">
+                    <h4>✓ Global Talent Access</h4>
+                    <p>Find candidates in your preferred time zones and locations globally with access to diverse talent pools.</p>
+                </div>
+                <div class="diff-item">
+                    <h4>✓ Dedicated Support</h4>
+                    <p>Enjoy continuous support from our team to ensure satisfaction and address any issues promptly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="industries" id="industries">
+        <div class="container">
+            <h2>Industries We Serve</h2>
+            <p class="section-intro">We work with diverse industries and understand their unique IT challenges and opportunities</p>
+            <div class="industry-list">
+                <div class="industry-item">
+                    <h4>Manufacturing & Industrial</h4>
+                    <p>Digital transformation for production and supply chain optimization</p>
+                </div>
+                <div class="industry-item">
+                    <h4>Pharmaceuticals & Healthcare</h4>
+                    <p>Compliance, data security, and operational efficiency solutions</p>
+                </div>
+                <div class="industry-item">
+                    <h4>Utilities & Energy</h4>
+                    <p>Smart grid technology and critical infrastructure management</p>
+                </div>
+                <div class="industry-item">
+                    <h4>Telecom & IT Services</h4>
+                    <p>Network infrastructure and customer-facing technology solutions</p>
+                </div>
+                <div class="industry-item">
+                    <h4>Retail & Consumer Goods</h4>
+                    <p>Omnichannel strategies and customer experience optimization</p>
+                </div>
+                <div class="industry-item">
+                    <h4>Automotive</h4>
+                    <p>Connected vehicles and manufacturing automation expertise</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <p class="section-intro">Ready to take your business to new heights? Connect with our experts today.</p>
+            <div class="contact-content">
+                <div>
+                    <form class="contact-form" id="contactForm">
+                        <div class="success-message" id="successMessage">
+                            Thank you! We'll get back to you shortly.
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company Name *</label>
+                            <input type="text" id="company" name="company" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-btn" style="padding: 1rem; font-size: 1rem;">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="info-block">
+                        <h4>📧 Email</h4>
+                        <p>contact@innovxt.com</p>
+                        <p>sales@innovxt.com</p>
+                    </div>
+                    <div class="info-block">
+                        <h4>🌐 Website</h4>
+                        <p><a href="https://innovxt.com" style="color: var(--secondary);">www.innovxt.com</a></p>
+                    </div>
+                    <div class="info-block">
+                        <h4>📍 Service Areas</h4>
+                        <p>India (Primary Market)</p>
+                        <p>Northern Europe (Denmark, Sweden, Belgium, Finland)</p>
+                        <p>Global Reach</p>
+                    </div>
+                    <div class="info-block">
+                        <h4>✓ Ready to Transform?</h4>
+                        <p>Connect with our team to discuss how InnovXT can drive your digital transformation and business growth.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 InnovXT - Innovative Xtream Technologies. All rights reserved. | Delivering Innovation Through Talent</p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop">↑</button>
+
+    <script>
+        // Navigation active state
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show success message
+            successMessage.classList.add('show');
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+
+            // In production, you would send the form data to a server/email service
+            console.log('Form submitted with data:', {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                phone: document.getElementById('phone').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
