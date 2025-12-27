@@ -49,12 +49,24 @@
             flex-wrap: wrap;
         }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            color: var(--secondary);
-        }
+.logo {
+  height: 50px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo img {
+  height: 100%;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+}
 
         .nav-menu {
             display: flex;
@@ -584,7 +596,9 @@
     <!-- Navigation Header -->
     <header>
         <nav>
-            <div class="logo">InnovXT</div>
+            <a href="#" class="logo">
+      <img src="assets/innovxt-logo.png" alt="InnovXT Logo">
+    </a>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
